@@ -1,0 +1,14 @@
+assets_management/
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── models.py
+│   ├── controllers.py
+│   ├── routes.py
+│   ├── utils.py  # For utilities like Excel export
+│   ├── templates/
+│   │   └── upload_template.xlsx
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+└── run.py
