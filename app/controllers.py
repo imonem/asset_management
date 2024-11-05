@@ -8,7 +8,7 @@ def create_record(data):
         record = Assets(**data)
         db.session.add(record)
         db.session.commit()
-        # return record.to_dict(), 201 # todo rewrite
+        return record.to_dict(), 201 # todo rewrite
     except Exception as e:
         db.session.rollback()
         abort(400, description=str(e))
