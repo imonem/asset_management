@@ -1,30 +1,25 @@
 from . import db
-from sqlalchemy import Integer, String, Column, MetaData, Table
-
 
 class Assets(db.Model):
-    id = Column( Integer, primary_key=True, autoincrement="auto")
-    name = Column(String(100), nullable=False)
-    barcode= Column(String(30), nullable=False)
-    barcode_type=Column( String(4), nullable=False)
-    individual_asset_reference=Column( String(30), nullable=False)
-    asset_type=Column( String(30), nullable=False)
-    asset_description= Column(String(256), nullable=True)
-    manufacturer_name=Column( String(50), nullable=True)
-    gln=Column( String(14), nullable=False)
-    current_status=Column( String(20), nullable=True)
-    asset_condition=Column( String(20), nullable=True)
-    contact_point_name=Column( String(100), nullable=True)
-    contact_point_email=Column( String(50), nullable=True)
-    contact_point_telephone=Column( String(15), nullable=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement="auto")
+    name = db.Column(db.String(100), nullable=False)
+    barcode= db.Column(db.String(30), nullable=False)
+    barcode_type=db.Column( db.String(4), nullable=False)
+    individual_asset_reference=db.Column( db.String(30), nullable=False)
+    asset_type=db.Column( db.String(30), nullable=False)
+    asset_description= db.Column(db.String(256), nullable=True)
+    manufacturer_name=db.Column( db.String(50), nullable=True)
+    gln=db.Column( db.String(14), nullable=False)
+    current_status=db.Column( db.String(20), nullable=True)
+    asset_condition=db.Column( db.String(20), nullable=True)
+    contact_point_name=db.Column( db.String(100), nullable=True)
+    contact_point_email=db.Column( db.String(50), nullable=True)
+    contact_point_telephone=db.Column( db.String(15), nullable=True)
 
     # Define other fields here
 
     def to_dict(self):
-        return {Column.key: getattr(self, Column.key) for Column.key in self.metadata.tables['assets'].columns.keys()}
-
-    # def to_dict(self):
-    #     return {
-    #         column.name: getattr(self, column.name)
-    #         for column in self.__table__.columns
-    #     }
+        """
+        Change later, this returns the row created values JSON object on success
+        """
+        return {db.Column.key: getattr(self, db.Column.key) for db.Column.key in self.metadata.tables['assets'].columns.keys()}

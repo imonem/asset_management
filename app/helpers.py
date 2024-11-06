@@ -1,7 +1,6 @@
-import time
-
 # Generate a random salt (you can adjust the length as needed)
 import random
+import time
 
 # Custom base encoding and decoding system
 
