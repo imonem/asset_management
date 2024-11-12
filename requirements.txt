@@ -4,3 +4,7 @@ psycopg2-binary  # PostgreSQL driver
 openpyxl  # Excel handling
 pandas  # For Excel export functionality
 python-dotenv # environment management
+
+dash 
+dash-bootstrap-components
+requests
