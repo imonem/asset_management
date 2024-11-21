@@ -2,6 +2,7 @@ import pandas as pd
 from flask import abort
 from flask import send_file
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.sql import text
 
 from io import BytesIO
 
@@ -55,6 +56,12 @@ def process_dataframe_for_bulk_create(df):
 def get_all_records(page, per_page):
     records = Assets.query.paginate(page=page, per_page=per_page)
     return [record.to_dict() for record in records.items]
+
+
+def get_total_records_count():
+    query = "SELECT COUNT(*) FROM assets"
+    result = db.session.execute(text(query)).scalar()
+    return result
 
 
 def update_record(record_id, data):
