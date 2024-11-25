@@ -1,0 +1,13 @@
+dash
+dash-bootstrap-components
+dash-core-components
+dash-extensions
+dash-html-components
+dash-table
+EditorConfig
+Flask
+Flask-Caching
+Flask-Compress
+gunicorn
+pandas
+python-dotenv
