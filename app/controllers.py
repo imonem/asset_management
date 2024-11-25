@@ -54,7 +54,11 @@ def process_dataframe_for_bulk_create(df):
 
 
 def get_all_records(page, per_page):
-    records = Assets.query.paginate(page=page, per_page=per_page)
+    max_per_page = get_total_records_count()
+    if max_per_page >= per_page:
+        records = Assets.query.paginate(page=page, per_page=per_page)
+    else:
+        records = Assets.query.paginate(page=page, per_page=max_per_page)
     return [record.to_dict() for record in records.items]
 
 
