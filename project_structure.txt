@@ -1,14 +1,21 @@
-assets_management/
-├── app/
+project-root/
+├── app.py                 # Main entry point for the Dash application
+├── Procfile               # For deploying to platforms like Heroku (optional)
+├── requirements.txt       # Dependencies list
+├── .env                   # Environment variables (e.g., DB credentials)
+├── .env.example           # Template for .env file
+├── assets/                # Static assets (e.g., custom CSS, images)
+│   └── style.css          # Custom styling for the app (e.g., navbar styles)
+├── data/                  # Directory for uploaded/downloaded files
+├── pages/                 # Contains the individual pages of the app
 │   ├── __init__.py
-│   ├── config.py
-│   ├── models.py
-│   ├── controllers.py
-│   ├── routes.py
-│   ├── utils.py  # For utilities like Excel export
-│   ├── templates/
-│   │   └── upload_template.xlsx
-├── requirements.txt
-├── Dockerfile
-├── docker-compose.yml
-└── run.py
+│   ├── create.py          # Page for single-row data creation
+│   ├── bulk_update.py     # Page for bulk update using an Excel template
+│   ├── bulk_export.py     # Page for bulk export to Excel/CSV
+│   └── products.py        # Paginated display of products table
+├── utils/                 # Utility functions (e.g., database operations)
+│   ├── __init__.py
+│   ├── database.py        # DB connection and operations
+│   ├── file_handling.py   # File upload/download functions
+│   └── data_processing.py # Functions for data cleaning, transformation, NLP, etc.
+└── templates/             # Optional, for custom HTML templates if needed
