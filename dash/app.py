@@ -4,10 +4,8 @@ from dash import Dash, Input, Output, State, callback, html
 from flask import Flask
 from utils.api import API
 
-import os
 import pandas as pd
 import requests
-from io import BytesIO
 
 from components.navbar import navbar
 
