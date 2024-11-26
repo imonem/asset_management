@@ -1,0 +1,49 @@
+import dash_bootstrap_components as dbc
+import requests
+from dash import dash_table, dcc, html, callback, Output, Input
+from utils.api import API
+import pandas as pd
+
+# Layout
+product_table = html.Div(
+    [
+        html.H1("Assets"),
+        dcc.Loading(
+            id="loading-spinner",
+            type="circle",
+            children=[
+                dash_table.DataTable(
+                    id="assets-table",
+                    columns=[
+                        {"name": "ID", "id": "id"},
+                        {"name": "Name", "id": "name"},
+                        {"name": "Asset Description", "id": "asset_description"},
+                        {"name": "Asset Type", "id": "asset_type"},
+                        {"name": "Barcode", "id": "barcode"},
+                        {"name": "Barcode Type", "id": "barcode_type"},
+                        {"name": "Contact Email", "id": "contact_point_email"},
+                        {"name": "Contact Name", "id": "contact_point_name"},
+                        {"name": "Contact Telephone", "id": "contact_point_telephone"},
+                        {"name": "Status", "id": "current_status"},
+                        {"name": "GLN", "id": "gln"},
+                        {"name": "Reference", "id": "individual_asset_reference"},
+                        {"name": "Manufacturer", "id": "manufacturer_name"},
+                        {"name": "Condition", "id": "asset_condition"},
+                    ],
+                    page_size=10,  # Pagination
+                    style_table={"overflowX": "auto"},
+                )
+            ],
+        ),
+    ]
+)
+
+
+# Callback to fetch and display data
+@callback(Output("assets-table", "data"), Input("url", "pathname"))
+def update_table_on_load(pathname):
+    if pathname == "/":
+        response = requests.get(f"{API}/records")
+        if response.status_code == 200:
+            return response.json()
+    return []
