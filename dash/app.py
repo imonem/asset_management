@@ -9,6 +9,8 @@ import requests
 
 from components.navbar import navbar
 
+dbc_css = "https://cdn.jsdelivr.net/gh/AnnMarieW/dash-bootstrap-templates/dbc.min.css"
+
 server = Flask(__name__)
 app = Dash(
     __name__,
@@ -16,7 +18,11 @@ app = Dash(
     use_pages=True,
     suppress_callback_exceptions=True,
     title="GS1 Egypt Asset Management App ",
-    external_stylesheets=[dbc.themes.SPACELAB, dbc.icons.FONT_AWESOME],
+    external_stylesheets=[
+        dbc.themes.SPACELAB,
+        dbc_css,
+        dbc.icons.FONT_AWESOME,
+    ],  # Added dbc_css to style Dash DataTable Component
 )
 
 
